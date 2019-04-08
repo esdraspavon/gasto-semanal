@@ -4,7 +4,7 @@ class Form extends Component {
   // Refs para el formulario
   nameRef = React.createRef();
   priceRef = React.createRef();
-  makeExpensive = e => {
+  makeExpend = e => {
     //Prevenir el default
     e.preventDefault();
 
@@ -16,14 +16,14 @@ class Form extends Component {
     console.log(expend);
 
     //agregarlo y enviarlo por props
-
+    this.props.makeExpend(expend);
     //Resetear el formulario
     e.currentTarget.reset();
   };
 
   render() {
     return (
-      <form onSubmit={this.makeExpensive}>
+      <form onSubmit={this.makeExpend}>
         <h2>Agrega tus gastos aqui</h2>
         <div className="campo">
           <label>Nombre Gasto</label>

@@ -4,6 +4,24 @@ import Header from "./Header";
 import Form from "./Form";
 
 class App extends Component {
+  state = {
+    estimated: "",
+    remaining: "",
+    expends: {}
+  };
+
+  //Agregar un nuevo gasto al state
+  makeExpend = expend => {
+    //tomar una copia del state actual
+    const expends = { ...this.state.expends };
+
+    //agregar al gasto al objeto del state
+    expends[`expend${Date.now()}`] = expend;
+
+    //ponerlo en el state
+    this.setState({ expends });
+  };
+
   render() {
     return (
       <div className="App container">
@@ -11,7 +29,7 @@ class App extends Component {
         <div className="contenido-principal contenido">
           <div className="row">
             <div className="one-half column">
-              <Form />
+              <Form makeExpend={this.makeExpend} />
             </div>
             <div className="one-half column">2</div>
           </div>
