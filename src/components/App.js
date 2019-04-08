@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../css/App.css";
 import Header from "./Header";
 import Form from "./Form";
+import List from "./List";
 
 class App extends Component {
   state = {
@@ -31,7 +32,9 @@ class App extends Component {
             <div className="one-half column">
               <Form makeExpend={this.makeExpend} />
             </div>
-            <div className="one-half column">2</div>
+            <div className="one-half column">
+              <List expends={this.state.expends} />
+            </div>
           </div>
         </div>
       </div>
