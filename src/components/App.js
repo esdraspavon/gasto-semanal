@@ -3,12 +3,27 @@ import "../css/App.css";
 import Header from "./Header";
 import Form from "./Form";
 import List from "./List";
+import { validarPresupuesto } from "../helper";
 
 class App extends Component {
   state = {
     estimated: "",
     remaining: "",
     expends: {}
+  };
+
+  componentDidMount() {
+    this.obtenerPresupuesto();
+  }
+
+  obtenerPresupuesto = () => {
+    let remaining = prompt("Cual es el presupuesto?");
+    let resultado = validarPresupuesto(remaining);
+    if (resultado) {
+      this.setState({ estimated: resultado, remaining: resultado });
+    } else {
+      this.obtenerPresupuesto();
+    }
   };
 
   //Agregar un nuevo gasto al state
