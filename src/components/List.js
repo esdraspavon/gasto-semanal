@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Expend from "./Expend";
-
+import PropTypes from "prop-types";
 class List extends Component {
   render() {
     return (
@@ -13,5 +13,7 @@ class List extends Component {
     );
   }
 }
-
+List.propTypes = {
+  expends: PropTypes.object.isRequired
+};
 export default List;

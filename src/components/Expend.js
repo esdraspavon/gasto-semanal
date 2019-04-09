@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Expend extends Component {
   render() {
@@ -12,4 +13,8 @@ class Expend extends Component {
     );
   }
 }
+Expend.propTypes = {
+  expend: PropTypes.object.isRequired
+};
+
 export default Expend;

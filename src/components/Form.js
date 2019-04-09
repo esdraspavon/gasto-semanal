@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Form extends Component {
   // Refs para el formulario
@@ -54,5 +55,9 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  makeExpend: PropTypes.func.isRequired
+};
 
 export default Form;
