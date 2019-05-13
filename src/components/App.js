@@ -3,12 +3,13 @@ import "../css/App.css";
 import Header from "./Header";
 import Form from "./Form";
 import List from "./List";
+import EstimatedControl from "./EstimatedControl";
 import { validarPresupuesto } from "../helper";
 
 class App extends Component {
   state = {
-    estimated: "",
-    remaining: "",
+    estimated: 0,
+    remaining: 0,
     expends: {}
   };
 
@@ -34,8 +35,25 @@ class App extends Component {
     //agregar al gasto al objeto del state
     expends[`expend${Date.now()}`] = expend;
 
+    //Restar al presupuesto
+    this.substractEstimated(expend.price);
+
     //ponerlo en el state
     this.setState({ expends });
+  };
+
+  //Restart del presupuesto cuando un gasto se crea
+  substractEstimated = price => {
+    //Leer el gasto
+    let substract = Number(price);
+
+    //Tomar una copia del state actual
+    let remaining = this.state.remaining;
+    //La restamos
+    remaining -= substract;
+
+    //Agregamos el nuevo state
+    this.setState({ remaining });
   };
 
   render() {
@@ -49,6 +67,10 @@ class App extends Component {
             </div>
             <div className="one-half column">
               <List expends={this.state.expends} />
+              <EstimatedControl
+                estimated={this.state.estimated}
+                remaining={this.state.remaining}
+              />
             </div>
           </div>
         </div>
